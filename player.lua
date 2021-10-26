@@ -1,3 +1,15 @@
+-- Bachelor of Software Engineering
+-- Media Design School
+-- Auckland
+-- New Zealand
+-- 
+-- (c) 2021 Media Design School
+--
+-- File Name   : player.lua
+-- Description : Behaviour for player turns, and player vars
+-- Author      : Keane Carotenuto
+-- Mail        : KeaneCarotenuto@gmail.com
+
 playerChoice = 1
 playerAmount = 1
 

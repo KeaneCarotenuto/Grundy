@@ -1,3 +1,15 @@
+-- Bachelor of Software Engineering
+-- Media Design School
+-- Auckland
+-- New Zealand
+-- 
+-- (c) 2021 Media Design School
+--
+-- File Name   : minimax.lua
+-- Description : Logic for the minimax algo, with alpha beta pruning. Manages the AI.
+-- Author      : Keane Carotenuto
+-- Mail        : KeaneCarotenuto@gmail.com
+
 function ABPrune(_node, _depth, alpha, beta, isMaxi) 
     if (#_node.children == 0) then _node:FindChildren(false) end
 	--If end node, return value

@@ -1,3 +1,15 @@
+-- Bachelor of Software Engineering
+-- Media Design School
+-- Auckland
+-- New Zealand
+-- 
+-- (c) 2021 Media Design School
+--
+-- File Name   : node.lua
+-- Description : Controls behaviour of the node based system of storing moves
+-- Author      : Keane Carotenuto
+-- Mail        : KeaneCarotenuto@gmail.com
+
 Node = {parent = nil, children = {}, stacks = {}, score = 0}
 
 function Node:New (o)
@@ -13,17 +25,19 @@ end
 
 --Deletes all children and values down the tree, then sets self to nil
 function Node:Delete()
+    --call delete on all children once
     for k, v in pairs(self.children) do
-        v:Delete()
+        if v then v:Delete() end
         v = nil
-        table.remove(self.children, k)
     end
     
-    self.parent = nil
-    self.children = nil
-    self.stacks = nil
-    self.score = nil
-    self = nil
+    --remove all children
+    while #self.children > 0 do
+        table.remove(self.children, 1)
+    end
+
+    --set own meta table to nil, properly delete it
+    setmetatable(self, nil)
 end
 
 --Searches for the root parent

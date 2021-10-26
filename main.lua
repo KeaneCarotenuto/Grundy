@@ -1,3 +1,15 @@
+-- Bachelor of Software Engineering
+-- Media Design School
+-- Auckland
+-- New Zealand
+-- 
+-- (c) 2021 Media Design School
+--
+-- File Name   : main.lua
+-- Description : The main file resposnible for the game logic
+-- Author      : Keane Carotenuto
+-- Mail        : KeaneCarotenuto@gmail.com
+
 require("node")
 require("minimax")
 require("player")
@@ -82,11 +94,12 @@ end
 function Game(key, scancode, isrepeat) 
     --Restart
    if key == "r" then
+        --Properly delete
         local root = startNode:FindRoot()
         root:Delete()
         startNode = nil
-        Node:New()
-        collectgarbage()
+        
+        --Reset vars
         playing = false
         startAmount = 7
         
@@ -121,6 +134,7 @@ function Game(key, scancode, isrepeat)
         --Try split chosen stack
         if key == "return"  then
             PlayerTurn()
+            table.sort(startNode.stacks, function(a, b) return a > b end)
         end            
     end 
 end
@@ -129,6 +143,7 @@ function love.update(dt)
     if playing then
         if not playerTurn then
             AITurn() 
+            table.sort(startNode.stacks, function(a, b) return a > b end)
         end
         
         if #startNode.children <= 0 then
